@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form page</title>
+
+    <style>
+
+#body {
+    background: #ffffff;
+    margin: 1px auto 0;
+    max-width: 400px;
+    min-height: 500px;
+    overflow: hidden;
+    padding: 45px 40px 46px;
+    margin-bottom: 100px;
+}
+
+#header{
+   margin: 1px auto 0;
+    background-color: #00ffff;
+    min-height: 25px;
+    max-width: 900px;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=email], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+button[type=submit] {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button[type=reset] {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type=submit]:hover {
+    background-color: blue;
+}
+button[type=reset]:hover {
+    background-color: red;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#footer {
+    margin: 1px auto 0;
+    background-color: #00ffff;
+    min-height: 15px;
+    max-width: 900px;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+#footer div {
+    background-color: #00ffff;
+    float: left;
+    width: 500px;
+}
+#footer div span {
+    color: #315f52;
+    display: block;
+    font-size: 26px;
+    line-height: 20px;
+}
+#footer div p {
+    color: red;
+    font-size: 12px;
+    line-height: 30px;
+}
+#footer div#connect {
+    float: right;
+    overflow: hidden;
+    width: auto;
+}
+#footer div#connect a {
+    background: url(images/icons.png) no-repeat;
+    display: block;
+    float: left;
+    text-indent: -99999px;
+}
+#footer div#connect a#facebook {
+    background-position: 0 0;
+    height: 30px;
+    width: 16px;
+}
+#footer div#connect a#twitter {
+    background-position: 0 -30px;
+    height: 30px;
+    margin: 0 0 0 28px;
+    width: 37px;
+}
+#footer div#connect a#googleplus {
+    background-position: 0 -61px;
+    height: 32px;
+    margin: 0 0 0 19px;
+    width: 32px;
+}
+#footer div#connect a#googleplus {
+    background-position: 0 -61px;
+    height: 32px;
+    margin: 0 0 0 19px;
+    width: 32px;
+}
+#footer div#connect a#pinterest {
+    background-position: 0 -94px;
+    height: 30px;
+    margin: 0 0 0 23px;
+    width: 30px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+
+  function checkForm(form)
+  {
+    // validation fails if the input is blank
+    if(form.fname.value == "") {
+      alert("Error: Please fill First Name!");
+      form.fname.focus();
+      return false;
+    }
+    if(form.lname.value == "") {
+      alert("Error: Please fill Last Name!");
+      form.lname.focus();
+      return false;
+    }
+
+    if(form.ID.value == "") {
+      alert("Error: Please fill ID!");
+      form.ID.focus();
+      return false;
+    }
+
+    // regular expression to match only alphanumeric characters and spaces
+    var re = /^[a-zA-Z ]+$/;
+
+    // validation fails if the input doesn't match our regular expression
+    if(!re.test(form.fname.value)) {
+      alert("Error: First Name contains invalid characters!");
+      form.fname.focus();
+      return false;
+    }
+    if(!re.test(form.lname.value)) {
+      alert("Error: Last Name contains invalid characters!");
+      form.lname.focus();
+      return false;
+    }
+
+   var rebut = /^[a-zA-Z0-9]+$/;
+    if(!rebut.test(form.ID.value)) {
+      alert("Error: ID contains invalid characters!");
+      form.ID.focus();
+      return false;
+    }
+    
+
+   /*for radio buttons
+      
+   */
+
+    /*about password*/
+
+     if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.ID.value) {
+        alert("Error: Password must be different from Username!");
+        form.pwd1.focus();
+        return false;
+      }
+
+      var repass = /[0-9]/;
+      if(!repass.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+     var repass1 = /[a-z]/;
+      if(!repass1.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+     var repass2 = /[A-Z]/;
+      if(!repass2.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.pwd1.focus();
+        return false;
+      }
+       var repass3 = /[@#$&]/;
+      if(!repass3.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one Special characters(@,#,$,&)!");
+        form.pwd1.focus();
+        return false;
+      }
+
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.pwd1.focus();
+      return false;
+    }
+
+    alert("You entered a valid password: " + form.pwd1.value);
+
+    
+    // validation was successful
+    return true;
+  }
+
+
+</script>
+</head>
+
+<body style="background: #077054;color: #315f52;font-size: 14px;margin: 0px;padding: 0px; overflow:auto;">
+
+<div id="header">
+        
+            
+            <a href="loginpage1.html"><img src="images/logo.png" alt="VJPAS3 Logo" style= "width:80px; height:55px; margin-left: 150px;"></a>
+            
+            <h1 style=" display:inline; margin-left: 100px; font-family: Arial, Helvetica, sans-serif;">VJPAS3 Network</h1>
+        
+</div>
+
+
+
+
+
+<div id="body">
+   
+  <form action="#" method="post" name="ContactForm" onsubmit="return checkForm(this);">
+     <fieldset>
+     <legend>Personal Details:</legend>
+
+    <label for="fname">FIRST NAME</label>
+    <input type="text"  name="fname" onsubmit="validate();" required>
+
+    <label for="lname">LAST NAME</label>
+    <input type="text" name="lname" required>
+
+    <label for="gender">GENDER &nbsp</label>
+    <input type="radio" name="gender" id="gender" checked> MALE
+   <input type="radio" name="gender" id="gender"> FEMALE
+   <input type="radio" name="gender" id="gender"> OTHER<br>
+
+  <label for="age">Age</label>  
+  <input type="number" size="6" name="age" min="18" max="99" value="18">
+
+    <label for="I'd">I'D</label>
+    <input type="text"  name="ID" required>
+
+    <label for="pass">Pass Word</label>
+    <input type="password"  name="PassWord" required>
+
+    <label for="repass">Change Pass Word</label>
+    <input type="password"  name="pwd1"  required>
+    <label for="confirmpass">Confirm Pass Word</label>
+    <input type="password"  name="pwd2" required>
+
+    <label for="email">Email Address</label> 
+    <input type="email"  name="email" required placeholder="Enter a valid email address">
+
+   <label for="degree">DEGREE</label>
+   <select >
+   <option value="ms">MASTER's </option>
+   <option value="bs">BACHELOR's</option>
+   </select>
+
+   <label for="course">COURSE</label>
+   <select >
+   <option value="cse">COMPUTERS</option>
+   <option value="ee">ELECTRONICS</option>
+   <option value="business">BUSINESS ADMINISTRATION</option>
+   <option value="it">IT</option>
+   </select>
+
+   <input type="checkbox" required name="terms" > please check you provided above information is correct<br>
+
+  
+    <button type="submit" value="Submit">Submit</button>
+    <button type="reset" value="Reset">Reset</button>
+   
+
+    </fieldset>
+  </form>
+
+</div>
+
+ <div id = "footer">
+   <div>
+            <span style="font-size: 19px;">Fremont City Location, USA | +1(XXX)-XXX-XXXX</span>
+            <p>
+                &copy; 2016 by Ashokkumar &amp; My pages. All rights reserved.
+            </p>
+    </div>
+
+    <div id="connect">
+            <a href="https://www.facebook.com/" id="facebook" target="_blank">Facebook</a>
+            <a href="https://www.twitter.com/" id="twitter" target="_blank">Twitter</a>
+            <a href="https://www.googleplus.com/" id="googleplus" target="_blank">Google&#43;</a>
+            <a href="https://www.pinterest.com/" id="pinterest" target="_blank">Pinterest</a>
+   </div>
+
+</body>
+
+
+</html>
